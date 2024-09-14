@@ -8,6 +8,7 @@ import xml.etree.ElementTree as xml_parser
 import datetime
 from xml.sax.saxutils import escape
 
+main_path = os.path.split(os.path.abspath(__file__))[0]
 
 annotator = spacy.load('pt_core_news_sm')
 
@@ -68,10 +69,10 @@ def get_number_of_sentences(d, analysis_path):
 
 def sentence_tokenization(text):
     try:
-        sent_detector = joblib.load('tools/sent_detector.dump')
+        sent_detector = joblib.load(os.path.join(main_path, 'tools/sent_detector.dump'))
     except:
         sent_detector = nltk.data.load('tokenizers/punkt/portuguese.pickle')
-        with open('tools/sent_detector.dump', 'wb') as dump_file:
+        with open(os.path.join(main_path, 'tools/sent_detector.dump'), 'wb') as dump_file:
             joblib.dump(sent_detector, dump_file)
 
     return sent_detector.tokenize(text)

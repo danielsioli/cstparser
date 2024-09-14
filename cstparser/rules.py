@@ -9,15 +9,15 @@ from xml.sax.saxutils import escape, unescape
 
 
 # translator = Translator()
-
+main_path = os.path.split(os.path.abspath(__file__))[0]
 
 numbers_conversion = {}
-with open('resources/numbers_to_digit.json', 'r') as numbers_file:
+with open(os.path.join(main_path, 'resources/numbers_to_digit.json'), 'r') as numbers_file:
     numbers_conversion = json.loads(''.join(numbers_file.readlines()))
 
 
 attribution_verbs = {}
-with open('resources/attribution_verbs.json', 'r') as attrib_file:
+with open(os.path.join(main_path, 'resources/attribution_verbs.json'), 'r') as attrib_file:
     attribution_verbs = json.loads(''.join(attrib_file.readlines()))
 
 

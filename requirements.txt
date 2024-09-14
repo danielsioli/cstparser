@@ -2,4 +2,4 @@ nltk
 joblib
 unidecode
 spacy
-sklearn
+scikit-learn

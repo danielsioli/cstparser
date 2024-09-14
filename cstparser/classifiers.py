@@ -6,10 +6,11 @@ from preprocess import get_sentence
 from joblib import load
 from xml.sax.saxutils import escape, unescape
 
+main_path = os.path.split(os.path.abspath(__file__))[0]
 
-classifier = load('models/mlp_multiclass_classifier.joblib')
-scaler = load('models/scaler.joblib')
-label_encoder = load('models/label_encoder.joblib')
+classifier = load(os.path.join(main_path, 'models/mlp_multiclass_classifier.joblib'))
+scaler = load(os.path.join(main_path, 'models/scaler.joblib'))
+label_encoder = load(os.path.join(main_path, 'models/label_encoder.joblib'))
 
 
 def write_results(selected_pairs, results, analysis_path, embed):

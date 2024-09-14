@@ -1,14 +1,16 @@
 import json
 from preprocess import nlp_analysis, get_sentence, get_number_of_sentences, normalize, tokenize_words, stopwords
+import os
 
+main_path = os.path.split(os.path.abspath(__file__))[0]
 
 synsets = {}
-with open('resources/synonyms.json', 'r') as syn_file:
+with open(os.path.join(main_path, 'resources/synonyms.json'), 'r') as syn_file:
     synsets = json.loads(''.join(syn_file.readlines()))
 
 
 attribution_verbs = {}
-with open('resources/attribution_verbs.json', 'r') as attrib_file:
+with open(os.path.join(main_path, 'resources/attribution_verbs.json'), 'r') as attrib_file:
     attribution_verbs = json.loads(''.join(attrib_file.readlines()))
 
 
